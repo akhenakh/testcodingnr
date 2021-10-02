@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"log"
 	"os"
 
 	"github.com/akhenakh/codingtestnr/wordsplit"
@@ -17,14 +18,20 @@ func main() {
 	defer cancel()
 
 	if len(os.Args) < 2 {
-		parseData(ctx, os.Stdin, s)
+		err := parseData(ctx, os.Stdin, s)
+		if err != nil {
+			log.Fatal(err)
+		}
 	} else {
 		for _, a := range os.Args[1:] {
 			f, err := os.Open(a)
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "error: %v\n", err)
+				log.Fatal(err)
 			}
-			parseData(ctx, f, s)
+			err = parseData(ctx, f, s)
+			if err != nil {
+				log.Fatal(err)
+			}
 			f.Close()
 		}
 	}

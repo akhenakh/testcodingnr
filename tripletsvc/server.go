@@ -4,7 +4,6 @@ import (
 	"bytes"
 	context "context"
 	"fmt"
-	"io"
 
 	"github.com/akhenakh/codingtestnr/wordsplit"
 	"github.com/akhenakh/codingtestnr/wordstat"
@@ -40,20 +39,4 @@ func (s *Server) Compute(ctx context.Context, req *ComputeRequest) (*ComputeResp
 	}
 
 	return &ComputeResponse{Stats: gstats}, nil
-}
-
-func parseData(ctx context.Context, r io.Reader, s wordstat.Sink) error {
-	itr := wordsplit.ParseAndSplit(ctx, r)
-	for {
-		t, err := itr.Next()
-		if err == wordsplit.Done {
-			break
-		}
-		if err != nil {
-			return err
-		}
-		s.Inc(wordstat.Triplet(t))
-	}
-
-	return nil
 }

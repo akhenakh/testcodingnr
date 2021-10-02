@@ -11,8 +11,8 @@ import (
 	"syscall"
 	"time"
 
-	log "github.com/go-kit/kit/log"
-	"github.com/go-kit/kit/log/level"
+	log "github.com/go-kit/log"
+	"github.com/go-kit/log/level"
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_opentracing "github.com/grpc-ecosystem/go-grpc-middleware/tracing/opentracing"
 	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
