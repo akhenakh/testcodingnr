@@ -1,0 +1,22 @@
+version: '3'
+
+tasks:
+  default:
+    deps: [test, build]
+
+  test:
+    desc: Runs go tests
+    cmds:
+      - go test -v ./...
+
+  lint:
+    desc: Runs linters
+    cmds:
+      - golangci-lint run
+
+  build:
+    desc: Build cli tool
+    cmds:
+      - cd cmd/tripletstat && go build -v
+
+
