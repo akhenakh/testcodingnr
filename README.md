@@ -64,6 +64,13 @@ Run the server:
 ./cmd/tripletserver/tripletserver 
 ```
 
+And the client:
+
+```sh
+./tripletclient -path ../../testdata/test01.txt 
+```
+
+
 ## Protobuf
 
 Generate with [buf](https://docs.buf.build/installation/)
