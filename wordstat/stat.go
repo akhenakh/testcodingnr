@@ -6,17 +6,20 @@ import (
 	"sort"
 )
 
+// Triplet 3 strings
 type Triplet [3]string
 
 // Sink is computing statistics for input Triplet
 // not thread safe
 type Sink map[Triplet]int
 
+// Stat is a triplet and its occurence
 type Stat struct {
 	Triplet   Triplet
 	Occurence int
 }
 
+// Stats is a slice of Stat
 type Stats []Stat
 
 // New returns a new Sink, ready to add compute Triplets stats

@@ -10,12 +10,12 @@ func TestSink_Compute(t *testing.T) {
 	tests := []struct {
 		name  string
 		input []Triplet
-		want  []Stats
+		want  Stats
 	}{
-		{"simple count", []Triplet{{"a", "b", "c"}}, []Stats{{Triplet{"a", "b", "c"}, 1}}},
-		{"simple count", []Triplet{{"a", "b", "c"}, {"a", "b", "c"}}, []Stats{{Triplet{"a", "b", "c"}, 2}}},
-		{"simple count", []Triplet{{"a", "b", "c"}, {"a", "b", "c"}, {"b", "c", "d"}}, []Stats{{Triplet{"a", "b", "c"}, 2}, {Triplet{"b", "c", "d"}, 1}}},
-		{"simple count", []Triplet{{"a", "b", "c"}, {"b", "c", "d"}, {"a", "b", "c"}}, []Stats{{Triplet{"a", "b", "c"}, 2}, {Triplet{"b", "c", "d"}, 1}}},
+		{"simple count", []Triplet{{"a", "b", "c"}}, []Stat{{Triplet{"a", "b", "c"}, 1}}},
+		{"simple count", []Triplet{{"a", "b", "c"}, {"a", "b", "c"}}, []Stat{{Triplet{"a", "b", "c"}, 2}}},
+		{"simple count", []Triplet{{"a", "b", "c"}, {"a", "b", "c"}, {"b", "c", "d"}}, []Stat{{Triplet{"a", "b", "c"}, 2}, {Triplet{"b", "c", "d"}, 1}}},
+		{"simple count", []Triplet{{"a", "b", "c"}, {"b", "c", "d"}, {"a", "b", "c"}}, []Stat{{Triplet{"a", "b", "c"}, 2}, {Triplet{"b", "c", "d"}, 1}}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

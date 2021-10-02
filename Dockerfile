@@ -8,5 +8,5 @@ RUN task build -v
 
 FROM gcr.io/distroless/static
 WORKDIR /root/
-COPY --from=builder  /build/cmd/triplestat/triplestat .
-ENTRYPOINT ["/root/triplestat"]
+COPY --from=builder  /build/cmd/tripletstat/tripletstat .
+ENTRYPOINT ["/root/tripletstat"]
