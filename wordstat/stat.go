@@ -1,7 +1,10 @@
 // package wordstat is computing statistics for input Triplet
 package wordstat
 
-import "sort"
+import (
+	"fmt"
+	"sort"
+)
 
 type Triplet [3]string
 
@@ -9,10 +12,12 @@ type Triplet [3]string
 // not thread safe
 type Sink map[Triplet]int
 
-type Stats struct {
+type Stat struct {
 	Triplet   Triplet
 	Occurence int
 }
+
+type Stats []Stat
 
 // New returns a new Sink, ready to add compute Triplets stats
 func New() Sink {
@@ -25,11 +30,11 @@ func (s Sink) Inc(t Triplet) {
 }
 
 // Compute returns the top 100 triplets
-func (s Sink) Compute() []Stats {
-	var stats []Stats
+func (s Sink) Compute() Stats {
+	var stats []Stat
 
 	for t, count := range s {
-		stats = append(stats, Stats{t, count})
+		stats = append(stats, Stat{t, count})
 	}
 	sort.SliceStable(stats, func(i, j int) bool {
 		return stats[i].Occurence > stats[j].Occurence
@@ -38,4 +43,16 @@ func (s Sink) Compute() []Stats {
 		return stats[:100]
 	}
 	return stats
+}
+
+func (s Stats) String() string {
+	var str string
+	for _, stat := range s {
+		str += fmt.Sprintf("%s - %d\n", stat.Triplet, stat.Occurence)
+	}
+	return str
+}
+
+func (t Triplet) String() string {
+	return t[0] + " " + t[1] + " " + t[2]
 }
