@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "github.com/akhenakh/codingtestnr/tripletsvc";
+
+service TripletService {
+	// Compute the top 100 triplet of a []byte
+	rpc Compute(ComputeRequest) returns (ComputeResponse) {}
+}
+
+message ComputeRequest {
+	bytes text = 1; 
+}
+
+
+message Triplet {
+	repeated string words = 1;
+}
+
+message Stat {
+	Triplet triplet = 1;
+	int32 occurence = 2;
+}
+
+message ComputeResponse{
+	repeated Stat stats = 1; 
+}

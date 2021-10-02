@@ -17,3 +17,5 @@
 .idea/
 
 cmd/tripletstat/tripletstat
+cmd/tripletserver/tripletserver
+cmd/tripletclient/tripletclient
