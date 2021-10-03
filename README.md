@@ -5,7 +5,7 @@
 To execute the command:
 
 ```sh
-cd cmd/triplestat
+cd cmd/tripletstat
 go run main.go
 ```
 
@@ -60,8 +60,17 @@ rpc Compute(ComputeRequest) returns (ComputeResponse) {}
 
 Run the server:
 
-```sh
-./cmd/tripletserver/tripletserver 
+Usage:
+```
+Usage of ./cmd/tripletserver/tripletserver:
+  -grpcPort=9200: gRPC API port
+  -httpMetricsPort=8888: http port
+```
+
+Note that the command also accept environment as parameter:
+```
+export GRPCPORT=4500
+./cmd/tripletserver/tripletserver
 ```
 
 And the client:
@@ -70,6 +79,9 @@ And the client:
 ./tripletclient -path ../../testdata/test01.txt 
 ```
 
+## Metrics
+
+Metrics for the gRPC server are available via Prometheus exposed on port 8888 (or httpMetricsPort param).
 
 ## Protobuf
 
